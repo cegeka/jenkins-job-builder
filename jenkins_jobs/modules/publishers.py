@@ -1885,8 +1885,10 @@ def logparser(parser, xml_parent, data):
         str(data.get('unstable-on-warning', False)).lower()
     XML.SubElement(clog, 'failBuildOnError').text = \
         str(data.get('fail-on-error', False)).lower()
+    # v2.0: enable project rule
+    XML.SubElement(clog, 'useProjectRule').text = 'true'
     # v1.08: this must be the full path, the name of the rules is not enough
-    XML.SubElement(clog, 'parsingRulesPath').text = data.get('parse-rules', '')
+    XML.SubElement(clog, 'projectRulePath').text = data.get('parse-rules', '')
 
 
 def copy_to_master(parser, xml_parent, data):
